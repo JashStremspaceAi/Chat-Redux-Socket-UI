@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+.chat-container {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.online-users {
+  width: 200px;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+.sidepanel-input-style{
+  width: 150px;
+  border-right: 1px solid #020202;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+.online-users h3 {
+  margin-top: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.online-users ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.online-users li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.chat-box {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.messages {
+  flex: 1;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+.message {
+  margin-bottom: 15px;
+  --r: 1em;  /* the radius */
+  --t: 1.5em; /* the size of the tail */
+  place-content: center;
+  max-width: 300px;
+  padding: 1em;
+  border-inline: var(--t) solid #0000;
+  border-radius: calc(var(--r) + var(--t))/var(--r);
+  mask: 
+    radial-gradient(100% 100% at var(--_p) 0,#0000 99%,#000 102%) 
+      var(--_p) 100%/var(--t) var(--t) no-repeat,
+    linear-gradient(#000 0 0) padding-box;
+  background: linear-gradient(135deg,#0050fe,#1384C5) border-box;
+  color: #fff;
+  place-self: start;
+}
+
+.message-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-text {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.message-timestamp {
+  font-size: 0.75em;
+  color: #999;
+  align-self: flex-end;
+}
+
+.input-box {
+  display: flex;
+  padding: 10px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px;
+  margin-left: 10px;
+  border: none;
+  background-color: #007bff;
   color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button:hover {
+  background-color: #0056b3;
 }
