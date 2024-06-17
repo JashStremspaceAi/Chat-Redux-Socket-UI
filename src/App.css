@@ -80,6 +80,11 @@
 
 .input-box {
   display: flex;
+  margin-bottom: 0;
+  position: fixed;
+  width: 75%;
+  bottom: 0;
+  left: 20%;
   padding: 10px;
   background-color: #f7f7f7;
   border-top: 1px solid #ddd;

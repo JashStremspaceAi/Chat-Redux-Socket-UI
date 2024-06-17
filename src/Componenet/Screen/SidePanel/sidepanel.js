@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import InputField from "../atoms/input";
 import Button from "../atoms/buttons";
 import { connect } from "react-redux";
-import {  emitUser } from "../../Redux/actions";
+import {  addUser,emitUser } from "../../Redux/actions";
 import "../../../App.css";
 class Sidepanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
+      user: '',
     };
   }
   // componentDidMount(){
@@ -25,26 +25,19 @@ class Sidepanel extends Component {
     console.log(user);
     if (user.trim()) {
       this.props.emitUser("user",user);
-      console.log("su",this.props.emitUser("user",user));
+      // console.log("su",this.props.emitUser("user",user));
       this.setState({ user: '' });
     }
   };
   render() {
     const { user } = this.state;
+    // console.log(user);
     return (
       <div>
         <div className="online-users">
-          <h3>Online Users</h3>
+         
           <ul>
-            <li>gaurav</li>
-            <li>ayush</li>
-            <li>divyansh</li>
-            {/* {user.map((key,index)=>(
-              <li>{key}</li>
-            ))} */}
-            {/* <li>
-              {user}
-            </li> */}
+          
             <li>
               <InputField
               className="sidepanel-input-style"
@@ -65,9 +58,9 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps =(dispatch)=>( {
-  // addUser,
-  emitUser,
-  dispatch:dispatch
-});
+const mapDispatchToProps = {
+  addUser,
+  emitUser
+  // dispatch:dispatch
+};
 export default connect(mapStateToProps, mapDispatchToProps)(Sidepanel);

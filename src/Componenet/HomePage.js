@@ -2,15 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addMessage, addUser, socketOn } from "./Redux/actions/index";
 import "../App.css";
-import Sidepanel from "./Screen/SidePanel/sidepanel";
 import Chat from "./Screen/ChatDisplay/chat";
+import DisplayName from "./Screen/SidePanel/displayName";
 
 class HomePage extends Component {
   
   componentDidMount() {
     // console.log(this.props);
     const { dispatch } = this.props;
-
+ console.log(dispatch);
     dispatch(
       socketOn("message", (data) => {
         console.log("Received message:", data);
@@ -19,9 +19,9 @@ class HomePage extends Component {
       })
     );
     dispatch(
-      socketOn("user",(data)=>{
-        console.log("Received user:", data);
-        dispatch(addUser(data));
+      socketOn("user",(userdata)=>{
+        console.log("Received user:", userdata);
+        dispatch(addUser(userdata));
       })
     );
   }
@@ -35,7 +35,7 @@ class HomePage extends Component {
 
     return (
       <div className="chat-container">
-        <Sidepanel />
+        <DisplayName users={messages.users}/>
         <Chat messages={messages} />
       </div>
     );
@@ -44,6 +44,7 @@ class HomePage extends Component {
 
 const mapStateToProps = (state) => ({
   messages: state.messages,
+  users:state.users
 });
 const mapDispatchToProps = (dispatch) => ({
   dispatch: dispatch,

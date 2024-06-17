@@ -9,6 +9,7 @@ class lowerSection extends Component{
     super(props);
     this.state = {
       message:'',
+     
     };
     this.messageshistory=[];   
  }
@@ -21,10 +22,20 @@ sendMessage = () => {
     }
   };
   ViewData = () => {
-    console.log("message history",this.messageshistory);   
+    console.log("dfhkj");
+    const {messages} =this.props;
+    console.log(messages);
+    // console.log("message history",this.messageshistory);  
+    this.setState(this.messageshistory=messages)
+    console.log(this.messageshistory);
+    let his=this.messageshistory.messages.history;
+    console.log(his);
+  //  return 
+  
   };
   render(){
     const { message } = this.state;
+    console.log("medfa",message)
     return(
         
         <div className="input-box">

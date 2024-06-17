@@ -4,18 +4,16 @@ let initialState={
     messages: [],
     users: [],
 }
-const messages = (state = [], action) => {
+const messages = (state = initialState, action) => {
     switch (action.type) {
         // case SET_STATE:
         //     return [...state, action.payload];
         case 'ADD_MESSAGE':
             console.log("state",state,"action",action.payload);
-            return [...state, action.payload];
+            return {...state,messages: action.payload};
         case 'ADD_USER':
-            // console.log("state",state,"action",action.payload);
-            initialState.users.push(action.payload);
-            console.log(initialState.users);
-            return [...state, initialState.users, action.payload];
+            console.log("state",state,"action",action.payload);
+            return {...state, users:action.payload};
         case 'USER_CHAT':
             return [...state, action.payload];
         default:
